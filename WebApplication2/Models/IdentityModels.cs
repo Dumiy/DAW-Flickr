@@ -30,4 +30,5 @@ namespace WebApplication2.Models
             return new ApplicationDbContext();
         }
     }
+
 }
