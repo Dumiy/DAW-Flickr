@@ -24,6 +24,12 @@ namespace WebApplication2.Models
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
+        
+        public DbSet<Comment> Comments { get; set; }
+        public DbSet<Albums> Albums { get; set; }
+        public DbSet<Image> Images { get; set; }
+        public DbSet<PhotoFlickr> Photos { get; set; }
+        public DbSet<Category> Category { get; set; }
 
         public static ApplicationDbContext Create()
         {
