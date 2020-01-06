@@ -55,18 +55,16 @@ namespace WebApplication2.Controllers
         [HttpPut]
         public ActionResult Edit(int id, Image requestImage)
         {
-            try
-            {
                 Image image = db.Images.Find(id);
                 if(TryUpdateModel(image))
                 {
                     image.name = requestImage.name;
                     image.category = requestImage.category;
-                    image. = requestImage.name;
                     image.name = requestImage.name;
 
-                }
             }
+            ViewBag.Image = image;
+            return View();
         }
     }
 }
