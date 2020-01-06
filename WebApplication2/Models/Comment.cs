@@ -18,7 +18,7 @@ namespace WebApplication2.Models
         public string Content { get; set; }
 
 
-        public virtual PhotoFlickr PhotoFlickr { get; set; }
+        public virtual ICollection<PhotoFlickr> PhotoFlickr { get; set; }
 
     }
 }

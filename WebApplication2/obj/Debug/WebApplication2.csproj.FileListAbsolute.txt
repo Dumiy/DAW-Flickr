@@ -313,3 +313,7 @@ D:\Stuffs\Facultate\Anul3-Cazac\DAW\DAW-Flickr\WebApplication2\bin\Microsoft.Owi
 D:\Stuffs\Facultate\Anul3-Cazac\DAW\DAW-Flickr\WebApplication2\bin\Microsoft.Owin.Security.OAuth.xml
 D:\Stuffs\Facultate\Anul3-Cazac\DAW\DAW-Flickr\WebApplication2\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 D:\Stuffs\Facultate\Anul3-Cazac\DAW\DAW-Flickr\WebApplication2\obj\Debug\WebApplication2.csproj.CopyComplete
+D:\Stuffs\Facultate\Anul3-Cazac\DAW\DAW-Flickr\WebApplication2\bin\AntiXssLibrary.dll
+D:\Stuffs\Facultate\Anul3-Cazac\DAW\DAW-Flickr\WebApplication2\bin\HtmlSanitizationLibrary.dll
+D:\Stuffs\Facultate\Anul3-Cazac\DAW\DAW-Flickr\WebApplication2\bin\AntiXssLibrary.xml
+D:\Stuffs\Facultate\Anul3-Cazac\DAW\DAW-Flickr\WebApplication2\bin\HtmlSanitizationLibrary.xml

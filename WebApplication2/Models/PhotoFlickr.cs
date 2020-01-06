@@ -36,18 +36,17 @@ namespace WebApplication2.Models
 
         public virtual Comment Comment { get; set; }
 
+        public virtual Category Category { get; set; }
+
+        public IEnumerable<SelectListItem> Categories { get; set; }
+
         public virtual ApplicationUser User { get; set; }
-
-
-
-        public virtual ICollection<Comment> Comments { get; set; }
     }
     public class PhotoFlickrDBContext : DbContext
     {
         public PhotoFlickrDBContext() : base("DefaultConnection") { }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Albums> Albums { get; set; }
-        public DbSet<Category> Categories { get; set; }
 
     }
 }

@@ -29,7 +29,7 @@ namespace WebApplication2.Models
         public DbSet<Albums> Albums { get; set; }
         public DbSet<Image> Images { get; set; }
         public DbSet<PhotoFlickr> Photos { get; set; }
-        public DbSet<Category> Category { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
         public static ApplicationDbContext Create()
         {

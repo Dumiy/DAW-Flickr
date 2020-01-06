@@ -1,0 +1,53 @@
+﻿@model WebApplication2.Models.PhotoFlickr
+
+@{
+    ViewBag.Title = "Afisare postare";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<hr />
+
+@if (TempData.ContainsKey("message"))
+{
+    <h3 class="alert alert-info" role="alert">@ViewBag.message</h3>
+}
+
+@foreach (WebApplication2.Models.PhotoFlickr photoFlickr in ViewBag.Photos)
+{
+    <div class="panel panel-article">
+        @Html.Partial("ArticleInfo", photoFlickr)
+        <div class="panel-footer article-panel-footer around">
+            <a class="btn btn-sm btn-success full-width" href="/Article/Show/@photoFlickr.Id">Afisare articol</a>
+        </div>
+    </div>
+    <br />
+}
+
+
+<div>
+    <nav aria-label="Page navigation">
+        <ul class="pagination">
+            <li>
+                <a href="/Article/Index?page=1" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            @for (int i = 1; i <= ViewBag.lastPage; i++)
+            {
+                <li><a href="/Article/Index?page=@i">@(i)</a></li>
+            }
+            <li>
+                <a href="/Article/Index?page=@(ViewBag.lastPage)" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+
+
+
+
+
