@@ -12,13 +12,15 @@ namespace PhotoSharing.Controllers
 
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        public ActionResult Index(string category = "")
+        public ActionResult Index(string search)
         {
             List<Photo> photos = new List<Photo>();
-            if (string.IsNullOrEmpty(category) || category.Equals("all", StringComparison.InvariantCultureIgnoreCase))
+            if (string.IsNullOrEmpty(search) || search.Equals("all", StringComparison.InvariantCultureIgnoreCase))
                 photos = db.Photos.OrderByDescending(a => a.Date).Take(10).ToList();
             else
-                photos = db.Photos.Where(p => p.Category.Name.Equals(category, StringComparison.InvariantCultureIgnoreCase)).OrderByDescending(a => a.Date).Take(10).ToList();
+                photos = db.Photos.Where(p => p.Title.Contains(search)).ToList();
+
+            //photos = db.Photos.Where(p => p.Category.Name.Equals(category, StringComparison.InvariantCultureIgnoreCase)).OrderByDescending(a => a.Date).Take(10).ToList();
             return View(photos);
         }
 

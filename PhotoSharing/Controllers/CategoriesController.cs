@@ -37,6 +37,25 @@ namespace PhotoSharing.Controllers
             return View(category);
         }
 
+        // GET: Categories/ShowCategoryPhotos/5
+        public ActionResult CategoryPhotos(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Category category = db.Categories.Find(id);
+            if (category == null)
+            {
+                return HttpNotFound();
+            }
+            List<Photo> photos = new List<Photo>();
+            photos = db.Photos.Where(p => p.Category.Id.ToString().Equals(category.Id.ToString(), StringComparison.InvariantCultureIgnoreCase)).OrderByDescending(a => a.Date).Take(10).ToList();
+            ViewBag.Category = category;
+            ViewBag.Photos = photos;
+            return View();
+        }
+
         // GET: Categories/Create
         [Authorize(Roles = "Administrator")]
         public ActionResult Create()

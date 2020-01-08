@@ -29,7 +29,7 @@
                     }
                     @foreach(var category in categories)
                     {
-                        <li>@Html.ActionLink(category.Name, "Index", "Home", new { category = category.Name}, null)</li>
+                        <li>@Html.ActionLink(category.Name, "../Categories/CategoryPhotos",new { id = category.Id})</li>
                     }
                 </ul>
                 @Html.Partial("_LoginPartial")

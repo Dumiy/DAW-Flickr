@@ -1,0 +1,17 @@
+﻿@model List<PhotoSharing.Models.Photo>
+@{
+    ViewBag.Title = ViewBag.Category.Name;
+}
+
+<div class="row">
+    @foreach (var photo in ViewBag.Photos)
+    {
+        <div class="text-center">
+            <h2>@photo.Title</h2>
+            <a href="@Url.Action("Details", "Photos", new { id = photo.Id})">
+                <img src="@Url.Content(photo.URL)" class="img-thumbnail" />
+
+            </a>
+        </div>
+    }
+</div>
