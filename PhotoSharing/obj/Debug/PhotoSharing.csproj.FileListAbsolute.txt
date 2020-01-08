@@ -241,3 +241,11 @@ C:\Users\cmrra\Desktop\Copy\PhotoSharing\obj\Debug\PhotoSharing.csproj.CoreCompi
 C:\Users\cmrra\Desktop\Copy\PhotoSharing\obj\Debug\PhotoSharing.csproj.CopyComplete
 C:\Users\cmrra\Desktop\Copy\PhotoSharing\obj\Debug\PhotoSharing.dll
 C:\Users\cmrra\Desktop\Copy\PhotoSharing\obj\Debug\PhotoSharing.pdb
+C:\Users\cmrra\Desktop\Copy\PhotoSharing\bin\ImageResizer.dll
+C:\Users\cmrra\Desktop\Copy\PhotoSharing\bin\ImageResizer.Plugins.DiskCache.dll
+C:\Users\cmrra\Desktop\Copy\PhotoSharing\bin\ImageResizer.Plugins.PrettyGifs.dll
+C:\Users\cmrra\Desktop\Copy\PhotoSharing\bin\ImageResizer.Plugins.SimpleFilters.dll
+C:\Users\cmrra\Desktop\Copy\PhotoSharing\bin\ImageResizer.xml
+C:\Users\cmrra\Desktop\Copy\PhotoSharing\bin\ImageResizer.Plugins.DiskCache.xml
+C:\Users\cmrra\Desktop\Copy\PhotoSharing\bin\ImageResizer.Plugins.PrettyGifs.xml
+C:\Users\cmrra\Desktop\Copy\PhotoSharing\bin\ImageResizer.Plugins.SimpleFilters.xml

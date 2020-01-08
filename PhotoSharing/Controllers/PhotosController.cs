@@ -10,6 +10,8 @@ using PhotoSharing.Models;
 using System.IO;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
+using System.Collections.Specialized;
+using ImageResizer;
 
 namespace PhotoSharing.Controllers
 {
@@ -121,10 +123,45 @@ namespace PhotoSharing.Controllers
         [Authorize(Roles = "User,Administrator")]
         public ActionResult Edit(int id, Photo reqPhoto)
         {
+            NameValueCollection nvc = Request.Form;
+            int Color = 0;
+            int Width = 0;
+            int Height = 0;
+            int ok = 0;
+            if (nvc["Width"] != "" && nvc["Height"] != "" && nvc["color"] != null)
+            {
+                Width = Convert.ToInt32(nvc["Width"]);
+                Height = Convert.ToInt32(nvc["Height"]);
+                Color = Convert.ToInt32(nvc["color"]);
+                ok = 1;
+            }
+            string temp = reqPhoto.URL;
+
+
             if (ModelState.IsValid)
             {
                 Photo photo = db.Photos.Find(id);
                 db.Entry(photo).State = EntityState.Modified;
+                if (ok == 1)
+                {
+                    if (Color == 0)
+                    {
+                        ResizeSettings resizeCropSettings = new ResizeSettings("width=" + Width.ToString() + "&height=" + Height.ToString() + "&crop=auto&s.grayscale=true");
+                        //Let the image builder add the correct extension based on the output file type (which may differ).
+                        ImageBuilder current = ImageBuilder.Current;
+                        reqPhoto.URL = current.Build(reqPhoto.URL, reqPhoto.URL, resizeCropSettings, false, false);
+                    }
+                    else
+                    {
+                        ResizeSettings resizeCropSettings = new ResizeSettings("width=" + Width.ToString() + "&height=" + Height.ToString() + "&crop=auto&s.sepia=true");
+
+                        //Let the image builder add the correct extension based on the output file type (which may differ).
+                        reqPhoto.URL = ImageBuilder.Current.Build(reqPhoto.URL, reqPhoto.URL, resizeCropSettings, false, false);
+
+                    }
+                }
+                reqPhoto.URL = temp;
+
                 db.SaveChanges();
 
                 if (photo.Owner.Id == User.Identity.GetUserId() ||
@@ -150,7 +187,7 @@ namespace PhotoSharing.Controllers
             {
                 return View(reqPhoto);
             }
-            
+
         }
 
         // GET: Photos/Delete/5
@@ -177,7 +214,7 @@ namespace PhotoSharing.Controllers
         {
             Photo photo = db.Photos.Find(id);
 
-            foreach(Comment comment in photo.Comments.ToList())
+            foreach (Comment comment in photo.Comments.ToList())
             {
                 db.Comments.Remove(comment);
             }
