@@ -1,0 +1,16 @@
+﻿@model List<PhotoSharing.Models.Photo>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="row">
+    @foreach (var photo in Model)
+    {
+    <div class="col-md-9">
+        <h2>@photo.Title</h2>
+        <a href="@Url.Action("Details", "Photos", new { id = photo.Id})">
+            <img src="@Url.Content(photo.URL)" width='500' height='500' />
+        </a>
+    </div>
+    }
+</div>

@@ -1,0 +1,52 @@
+﻿@model PhotoSharing.Models.Photo
+@using PhotoSharing.Models
+@using Microsoft.AspNet.Identity
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>@Model.Title</h4>
+    <hr />
+    <img src="@Url.Content(Model.URL)" max-width=70% max-height="1500" />
+    <h6>Uploaded by: @Model.Owner.UserName</h6>
+    <h7>Date: @Model.Date</h7>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
+</p>
+@Html.Partial("../Comments/Create", new Comment())
+
+@if (Model.Comments != null && Model.Comments.Count > 0)
+{
+    foreach (Comment c in Model.Comments)
+    {
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>@c.Author.FirstName @c.Author.LastName </strong>
+                <span class="text-muted">
+
+                    @c.Timestamp
+                    @if (c.Author.Id == User.Identity.GetUserId() || User.Identity.GetUserId() == "Administrator")
+                    {
+                        <span class="text-right ">
+                            @Html.ActionLink("Edit", "../Comments/Edit", new { id = c.Id })
+                        </span>
+                    }
+                    @if (Model.Owner.Id == User.Identity.GetUserId())
+                    {
+                        <span class="text-right ">
+                            @Html.ActionLink("Delete", "../Comments/Delete", new { id = c.Id })
+                        </span>
+                    }
+
+                </span>
+            </div>
+            <div class="panel-body">
+                @c.Content
+            </div><!-- /panel-body -->
+        </div><!-- /panel panel-default -->
+    }
+}
